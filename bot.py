@@ -16,6 +16,7 @@ multiply_icon = "https://pp.vk.me/c627626/v627626512/2a62e/xqnPMigaP5c.jpg"
 error_icon = "https://pp.vk.me/c627626/v627626512/2a67a/ZvTeGq6Mf88.jpg"
 random_icon = "https://image.freepik.com/free-icon/dice_318-40877.jpg"
 
+
 @bot.inline_handler(func=lambda query: len(query.query) is 0)
 def empty_query(query):
     hint = "Введите ровно 2 числа"
@@ -87,7 +88,7 @@ def query_text(query):
         )
 
         if num1 < num2:
-            m_rand = random.randint(int(num1), int(num2))
+            m_rand = random.randint(num1, num2)
             r_rand = types.InlineQueryResultArticle(
                 id='5', title="Дайс ролл",
                 description="Нажми чтобы кинуть кубик",
@@ -97,7 +98,7 @@ def query_text(query):
             )
 
         elif num1 > num2:
-            m_rand = random.randint(int(num2), int(num1))
+            m_rand = random.randint(num2, num1)
             r_rand = types.InlineQueryResultArticle(
                 id='6', title="Дайс ролл",
                 description="Нажми чтобы кинуть кубик",
@@ -109,8 +110,6 @@ def query_text(query):
             bot.answer_inline_query(query.id, [r_sum, r_sub, r_div, r_mul, r_rand])
     except Exception as e:
         print("{!s}\n{!s}".format(type(e), str(e)))
-
-
 
 
 if __name__ == '__main__':
