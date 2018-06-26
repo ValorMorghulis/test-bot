@@ -88,7 +88,7 @@ def query_text(query):
             thumb_url=multiply_icon, thumb_width=48, thumb_height=48
         )
 
-        if num1 < num2:
+        if int(num1) < int(num2):
             m_rand = randrange(int(num1), int(num2), 1)
             r_rand = types.InlineQueryResultArticle(
                 id='5', title="Дайс ролл",
@@ -98,7 +98,7 @@ def query_text(query):
                 thumb_url=random_icon, thumb_width=48, thumb_height=48
             )
 
-        elif num1 > num2:
+        elif int(num1) > int(num2):
             m_rand = randrange(int(num2), int(num1), 1)
             r_rand = types.InlineQueryResultArticle(
                 id='6', title="Дайс ролл",
