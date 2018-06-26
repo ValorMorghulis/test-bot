@@ -57,9 +57,15 @@ def query_text(query):
             input_message_content=types.InputTextMessageContent(
                 message_text="{!s} * {!s} = {!s}".format(num1, num2, m_mul))
         )
-        if num1 > num2:
-            num1 = num2
-            num2 = num1
+        if num1 < num2:
+            m_rand = random.randint(int(num1), int(num2))
+            r_rand = types.InlineQueryResultArticle(
+                id='5', title="Дайс ролл",
+                description="Нажми чтобы кинуть кубик",
+                input_message_content=types.InputTextMessageContent(
+                    message_text="{!s} d {!s} = {!s}".format(num1, num2, m_rand))
+            )
+        elif num1 > num2:
             m_rand = random.randint(int(num1), int(num2))
             r_rand = types.InlineQueryResultArticle(
                 id='5', title="Дайс ролл",
