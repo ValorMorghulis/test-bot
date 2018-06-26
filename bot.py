@@ -21,10 +21,9 @@ random_icon = "https://image.freepik.com/free-icon/dice_318-40877.jpg"
 def query_text(query):
     try:
         matches = re.match(digits_pattern, query.query)
-
+        num1, num2 = matches.group().split()
     except AttributeError as ex:
         return
-    num1, num2 = matches.group().split()
     try:
         m_sum = int(num1) + int(num2)
         r_sum = types.InlineQueryResultArticle(
