@@ -57,24 +57,26 @@ def query_text(query):
             input_message_content=types.InputTextMessageContent(
                 message_text="{!s} * {!s} = {!s}".format(num1, num2, m_mul))
         )
+
         if num1 < num2:
             m_rand = random.randint(int(num1), int(num2))
-            r_rand = types.InlineQueryResultArticle(
-                id='5', title="Дайс ролл",
-                description="Нажми чтобы кинуть кубик",
-                input_message_content=types.InputTextMessageContent(
-                    message_text="{!s} d {!s} = {!s}".format(num1, num2, m_rand))
-            )
-        elif num1 > num2:
-            m_rand = random.randint(int(num1), int(num2))
-            r_rand = types.InlineQueryResultArticle(
+            r_ran = types.InlineQueryResultArticle(
                 id='5', title="Дайс ролл",
                 description="Нажми чтобы кинуть кубик",
                 input_message_content=types.InputTextMessageContent(
                     message_text="{!s} d {!s} = {!s}".format(num1, num2, m_rand))
             )
 
-        bot.answer_inline_query(query.id, [r_sum, r_sub, r_div, r_mul, r_rand])
+        elif num1 > num2:
+            m_rand = random.randint(int(num2), int(num1))
+            r_ran = types.InlineQueryResultArticle(
+                id='5', title="Дайс ролл",
+                description="Нажми чтобы кинуть кубик",
+                input_message_content=types.InputTextMessageContent(
+                    message_text="{!s} d {!s} = {!s}".format(num1, num2, m_rand))
+            )
+
+        bot.answer_inline_query(query.id, [r_sum, r_sub, r_div, r_mul, r_ran])
     except Exception as e:
         print("{!s}\n{!s}".format(type(e), str(e)))
 
