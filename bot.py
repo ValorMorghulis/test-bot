@@ -16,6 +16,21 @@ multiply_icon = "https://pp.vk.me/c627626/v627626512/2a62e/xqnPMigaP5c.jpg"
 error_icon = "https://pp.vk.me/c627626/v627626512/2a67a/ZvTeGq6Mf88.jpg"
 random_icon = "https://image.freepik.com/free-icon/dice_318-40877.jpg"
 
+@bot.inline_handler(func=lambda query: len(query.query) is 0)
+def empty_query(query):
+    hint = "Введите ровно 2 числа"
+    try:
+        r = types.InlineQueryResultArticle(
+            id='1',
+            title="Бот \"Валориан 2.0\"",
+            description=hint,
+            input_message_content=types.InputTextMessageContent(
+                message_text="Эх, зря я не ввёл 2 числа :(")
+        )
+        bot.answer_inline_query(query.id, [r])
+    except Exception as e:
+        print(e)
+
 
 @bot.inline_handler(func=lambda query: len(query.query) > 0)
 def query_text(query):
@@ -96,20 +111,6 @@ def query_text(query):
         print("{!s}\n{!s}".format(type(e), str(e)))
 
 
-@bot.inline_handler(func=lambda query: len(query.query) is 0)
-def empty_query(query):
-    hint = "Введите ровно 2 числа"
-    try:
-        r = types.InlineQueryResultArticle(
-            id='1',
-            title="Бот \"Валориан 2.0\"",
-            description=hint,
-            input_message_content=types.InputTextMessageContent(
-                message_text="Эх, зря я не ввёл 2 числа :(")
-        )
-        bot.answer_inline_query(query.id, [r])
-    except Exception as e:
-        print(e)
 
 
 if __name__ == '__main__':
