@@ -21,16 +21,17 @@ random_icon = "https://image.freepik.com/free-icon/dice_318-40877.jpg"
 def query_text(query):
     try:
         matches = re.match(digits_pattern, query.query)
-        num1, num2 = matches.group().split()
+
     except AttributeError as ex:
         return
+    num1, num2 = matches.group().split()
     try:
         m_sum = int(num1) + int(num2)
         r_sum = types.InlineQueryResultArticle(
             id='1', title="Сумма",
             description="Результат: {!s}".format(m_sum),
             input_message_content=types.InputTextMessageContent(
-                message_text="{!s} + {!s} = {!s}".format(num1, num2, m_sum)),
+            message_text="{!s} + {!s} = {!s}".format(num1, num2, m_sum)),
             thumb_url=plus_icon, thumb_width=48, thumb_height=48
         )
 
@@ -39,7 +40,7 @@ def query_text(query):
             id='2', title="Разность",
             description="Результат: {!s}".format(m_sub),
             input_message_content=types.InputTextMessageContent(
-                message_text="{!s} - {!s} = {!s}".format(num1, num2, m_sub)),
+            message_text="{!s} - {!s} = {!s}".format(num1, num2, m_sub)),
             thumb_url=minus_icon, thumb_width=48, thumb_height=48
         )
 
@@ -49,7 +50,7 @@ def query_text(query):
                 id='3', title="Частное",
                 description="Результат: {0:.2f}".format(m_div),
                 input_message_content=types.InputTextMessageContent(
-                    message_text="{0!s} / {1!s} = {2:.2f}".format(num1, num2, m_div)),
+                message_text="{0!s} / {1!s} = {2:.2f}".format(num1, num2, m_div)),
                 thumb_url=divide_icon, thumb_width=48, thumb_height=48
             )
 
@@ -57,7 +58,7 @@ def query_text(query):
             r_div = types.InlineQueryResultArticle(
                 id='3', title="Частное", description="На ноль делить нельзя!",
                 input_message_content=types.InputTextMessageContent(
-                    message_text="Я нехороший человек и делю на ноль!"),
+                message_text="Я нехороший человек и делю на ноль!"),
                 thumb_url=error_icon, thumb_width=48, thumb_height=48,
 
             )
@@ -67,27 +68,27 @@ def query_text(query):
             id='4', title="Произведение",
             description="Результат: {!s}".format(m_mul),
             input_message_content=types.InputTextMessageContent(
-                message_text="{!s} * {!s} = {!s}".format(num1, num2, m_mul)),
+            message_text="{!s} * {!s} = {!s}".format(num1, num2, m_mul)),
             thumb_url=multiply_icon, thumb_width=48, thumb_height=48
         )
 
         if num1 < num2:
-            m_rand = random.randint(int(num1), int(num2))
+            m_rand = random.randrange(int(num1), int(num2) + 1)
             r_rand = types.InlineQueryResultArticle(
                 id='5', title="Дайс ролл",
                 description="Нажми чтобы кинуть кубик",
                 input_message_content=types.InputTextMessageContent(
-                    message_text="{!s} d {!s} = {!s}".format(num1, num2, m_rand)),
+                message_text="{!s} d {!s} = {!s}".format(num1, num2, m_rand)),
                 thumb_url=random_icon, thumb_width=48, thumb_height=48
             )
 
         elif num1 > num2:
-            m_rand = random.randint(int(num2), int(num1))
+            m_rand = random.randrange(int(num2), int(num1) + 1)
             r_rand = types.InlineQueryResultArticle(
-                id='5', title="Дайс ролл",
+                id='6', title="Дайс ролл",
                 description="Нажми чтобы кинуть кубик",
                 input_message_content=types.InputTextMessageContent(
-                    message_text="{!s} d {!s} = {!s}".format(num2, num1, m_rand)),
+                message_text="{!s} d {!s} = {!s}".format(num2, num1, m_rand)),
                 thumb_url=random_icon, thumb_width=48, thumb_height=48
             )
 
