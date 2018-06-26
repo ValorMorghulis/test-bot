@@ -4,6 +4,7 @@ import telebot
 import re
 from telebot import types
 import random
+from random import randint, randrange
 
 token = '538390325:AAGOQAidB6aIJntf9kwrOWWlxQCnvCtH40I'
 bot = telebot.TeleBot(token)
@@ -88,7 +89,7 @@ def query_text(query):
         )
 
         if num1 < num2:
-            m_rand = random.randint(num1, num2)
+            m_rand = randint(int(num1), int(num2))
             r_rand = types.InlineQueryResultArticle(
                 id='5', title="Дайс ролл",
                 description="Нажми чтобы кинуть кубик",
@@ -98,7 +99,7 @@ def query_text(query):
             )
 
         elif num1 > num2:
-            m_rand = random.randint(num2, num1)
+            m_rand = randint(int(num2), int(num1))
             r_rand = types.InlineQueryResultArticle(
                 id='6', title="Дайс ролл",
                 description="Нажми чтобы кинуть кубик",
