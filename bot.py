@@ -89,7 +89,7 @@ def query_text(query):
         )
 
         if num1 < num2:
-            m_rand = randint(int(num1), int(num2))
+            m_rand = randrange(int(num1), int(num2), 1)
             r_rand = types.InlineQueryResultArticle(
                 id='5', title="Дайс ролл",
                 description="Нажми чтобы кинуть кубик",
@@ -99,7 +99,7 @@ def query_text(query):
             )
 
         elif num1 > num2:
-            m_rand = randint(int(num2), int(num1))
+            m_rand = randrange(int(num2), int(num1), 1)
             r_rand = types.InlineQueryResultArticle(
                 id='6', title="Дайс ролл",
                 description="Нажми чтобы кинуть кубик",
