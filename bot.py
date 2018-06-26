@@ -7,7 +7,7 @@ import random
 
 token = '538390325:AAGOQAidB6aIJntf9kwrOWWlxQCnvCtH40I'
 bot = telebot.TeleBot(token)
-digits_pattern = re.compile(r'^[0-9] + [0-9] + $', re.MULTILINE)
+digits_pattern = re.compile(r'^[0-9]+ [0-9]+$', re.MULTILINE)
 
 
 @bot.inline_handler(func=lambda query: len(query.query) > 0)
