@@ -92,8 +92,8 @@ def query_text(query):
                 )
 
             bot.answer_inline_query(query.id, [r_sum, r_sub, r_div, r_mul, r_ran])
-                except Exception as e:
-                    print("{!s}\n{!s}".format(type(e), str(e)))
+        except Exception as e:
+            print("{!s}\n{!s}".format(type(e), str(e)))
 
 
 @bot.inline_handler(func=lambda query: len(query.query) is 0)
