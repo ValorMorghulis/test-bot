@@ -7,7 +7,7 @@ import random
 
 token = '538390325:AAGOQAidB6aIJntf9kwrOWWlxQCnvCtH40I'
 bot = telebot.TeleBot(token)
-digits_pattern = re.compile(r'^[0-9]+ [0-9]+$', re.MULTILINE)
+digits_pattern = re.compile(r'^[0-9] + [0-9] + $', re.MULTILINE)
 
 
 @bot.inline_handler(func=lambda query: len(query.query) > 0)
@@ -57,13 +57,14 @@ def query_text(query):
             input_message_content=types.InputTextMessageContent(
                 message_text="{!s} * {!s} = {!s}".format(num1, num2, m_mul))
         )
-
-        m_rand = random.randint(int(num1), int(num2))
-        r_rand = types.InlineQueryResultArticle(
-            id='5', title="Дайс ролл",
-            description="Нажми чтобы кинуть кубик",
-            input_message_content=types.InputTextMessageContent(
-                message_text="{!s} d {!s} = {!s}".format(num1, num2, m_rand))
+        if num1 > num2:
+            num1 = num2 and num2 = num1
+            m_rand = random.randint(int(num1), int(num2))
+            r_rand = types.InlineQueryResultArticle(
+                id='5', title="Дайс ролл",
+                description="Нажми чтобы кинуть кубик",
+                input_message_content=types.InputTextMessageContent(
+                    message_text="{!s} d {!s} = {!s}".format(num1, num2, m_rand))
         )
 
         bot.answer_inline_query(query.id, [r_sum, r_sub, r_div, r_mul, r_rand])
