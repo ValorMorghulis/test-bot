@@ -72,7 +72,7 @@ def query_text(query):
         )
 
         if num1 < num2:
-            m_rand = random.randrange(int(num1), int(num2) + 1)
+            m_rand = random.randint(int(num1), int(num2))
             r_rand = types.InlineQueryResultArticle(
                 id='5', title="Дайс ролл",
                 description="Нажми чтобы кинуть кубик",
@@ -82,7 +82,7 @@ def query_text(query):
             )
 
         elif num1 > num2:
-            m_rand = random.randrange(int(num2), int(num1) + 1)
+            m_rand = random.randint(int(num2), int(num1))
             r_rand = types.InlineQueryResultArticle(
                 id='6', title="Дайс ролл",
                 description="Нажми чтобы кинуть кубик",
@@ -102,7 +102,7 @@ def empty_query(query):
     try:
         r = types.InlineQueryResultArticle(
             id='1',
-            title="Бот \"Математика\"",
+            title="Бот \"Валориан 2.0\"",
             description=hint,
             input_message_content=types.InputTextMessageContent(
                 message_text="Эх, зря я не ввёл 2 числа :(")
