@@ -64,35 +64,34 @@ def query_text(query):
 
         m_mul = int(num1) * int(num2)
         r_mul = types.InlineQueryResultArticle(
-                id='4', title="Произведение",
-                description="Результат: {!s}".format(m_mul),
-                input_message_content=types.InputTextMessageContent(
-                    message_text="{!s} * {!s} = {!s}".format(num1, num2, m_mul)),
-                thumb_url=multiply_icon, thumb_width=48, thumb_height=48
-            )
+            id='4', title="Произведение",
+            description="Результат: {!s}".format(m_mul),
+            input_message_content=types.InputTextMessageContent(
+                message_text="{!s} * {!s} = {!s}".format(num1, num2, m_mul)),
+            thumb_url=multiply_icon, thumb_width=48, thumb_height=48
+        )
 
         if num1 < num2:
             m_rand = random.randint(int(num1), int(num2))
-            r_ran = types.InlineQueryResultArticle(
-                    id='5', title="Дайс ролл",
-                    description="Нажми чтобы кинуть кубик",
-                    input_message_content=types.InputTextMessageContent(
-                        message_text="{!s} d {!s} = {!s}".format(num1, num2, m_rand)),
-                    thumb_url=random_icon, thumb_width=48, thumb_height=48
-                )
+            r_rand = types.InlineQueryResultArticle(
+                id='5', title="Дайс ролл",
+                description="Нажми чтобы кинуть кубик",
+                input_message_content=types.InputTextMessageContent(
+                    message_text="{!s} d {!s} = {!s}".format(num1, num2, m_rand)),
+                thumb_url=random_icon, thumb_width=48, thumb_height=48
+            )
 
         elif num1 > num2:
             m_rand = random.randint(int(num2), int(num1))
-            r_ran = types.InlineQueryResultArticle(
-                    id='5', title="Дайс ролл",
-                    description="Нажми чтобы кинуть кубик",
-                    input_message_content=types.InputTextMessageContent(
-                        message_text="{!s} d {!s} = {!s}".format(num2, num1, m_rand)),
-                    thumb_url=random_icon, thumb_width=48, thumb_height=48
+            r_rand = types.InlineQueryResultArticle(
+                id='5', title="Дайс ролл",
+                description="Нажми чтобы кинуть кубик",
+                input_message_content=types.InputTextMessageContent(
+                    message_text="{!s} d {!s} = {!s}".format(num2, num1, m_rand)),
+                thumb_url=random_icon, thumb_width=48, thumb_height=48
+            )
 
-                    )
-
-            bot.answer_inline_query(query.id, [r_sum, r_sub, r_div, r_mul, r_ran])
+            bot.answer_inline_query(query.id, [r_sum, r_sub, r_div, r_mul, r_rand])
     except Exception as e:
         print("{!s}\n{!s}".format(type(e), str(e)))
 
