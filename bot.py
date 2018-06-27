@@ -108,7 +108,7 @@ def query_text(query):
                 thumb_url=random_icon, thumb_width=48, thumb_height=48
             )
 
-            bot.answer_inline_query(query.id, [r_sum, r_sub, r_div, r_mul, r_rand])
+        bot.answer_inline_query(query.id, [r_sum, r_sub, r_div, r_mul, r_rand])
     except Exception as e:
         print("{!s}\n{!s}".format(type(e), str(e)))
 
