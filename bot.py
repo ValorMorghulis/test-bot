@@ -6,7 +6,7 @@ from telebot import types
 import random
 from random import randint, randrange
 
-token = '538390325:AAGOQAidB6aIJntf9kwrOWWlxQCnvCtH40I'
+token = 'YOUR TOKEN HERE'
 bot = telebot.TeleBot(token)
 digits_pattern = re.compile(r'^[0-9]+ [0-9]+$', re.MULTILINE)
 
